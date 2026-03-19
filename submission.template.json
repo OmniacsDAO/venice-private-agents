@@ -55,7 +55,7 @@
     "moltbookPostURL": "REPLACE_WITH_MOLTBOOK_POST_URL"
   },
   "deployedURL": "https://github.com/OmniacsDAO/venice-private-agents",
-  "videoURL": "REPLACE_WITH_VIDEO_URL",
-  "pictures": "REPLACE_WITH_SCREENSHOT_URLS",
-  "coverImageURL": "REPLACE_WITH_COVER_IMAGE_URL"
+  "videoURL": "https://www.youtube.com/watch?v=x5PqcDrWWeM",
+  "pictures": "https://github.com/OmniacsDAO/venice-private-agents/blob/main/images/Screenshot.png?raw=true",
+  "coverImageURL": "https://github.com/OmniacsDAO/venice-private-agents/blob/main/images/Banner.png?raw=true"
 }
