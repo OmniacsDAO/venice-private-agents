@@ -1,0 +1,107 @@
+{
+  "_note_schema": "This manifest uses ERC-8004 field conventions for discoverability, but this agent does not perform full ERC-8004 on-chain identity registration.",
+  "$schema": "agent-manifest-v1",
+  "name": "Veiled Oracle",
+  "description": "Request-triggered agent that uses Venice AI no-data-retention inference to analyze sensitive on-chain data privately, producing verifiable public verdicts and storing full reports via x402 services on Base.",
+  "version": "1.0.0",
+  "operator": {
+    "name": "Omniacs DAO",
+    "url": "https://omniacsdao.xyz",
+    "wallet": "0x_OPERATOR_WALLET_ADDRESS",
+    "_note_wallet": "Placeholder — populated at deploy time via the WALLET_ADDRESS environment variable."
+  },
+  "identity": {
+    "_note": "The agent transacts on Base using USDC via the x402 protocol. No ERC-8004 registry entry exists on-chain.",
+    "chainId": 8453,
+    "network": "base",
+    "token": "USDC"
+  },
+  "tools": [
+    {
+      "name": "venice-ai",
+      "type": "inference",
+      "provider": "Venice AI",
+      "url": "https://api.venice.ai/api/v1",
+      "model": "qwen3-235b-a22b-instruct-2507",
+      "privacy": "no-data-retention",
+      "cost_per_call": "free (Venice API key)"
+    },
+    {
+      "name": "x402-pastebin",
+      "type": "x402-service",
+      "url": "https://pastebin.0000402.xyz",
+      "cost_per_call": "$0.01 USDC",
+      "purpose": "Plain text report storage"
+    },
+    {
+      "name": "x402-timecapsule",
+      "type": "x402-service",
+      "url": "https://timecapsule.0000402.xyz",
+      "cost_per_call": "$0.05 USDC",
+      "purpose": "Time-locked delayed disclosure"
+    },
+    {
+      "name": "etherscan-v2",
+      "type": "data-source",
+      "url": "https://api.etherscan.io/v2/api",
+      "cost_per_call": "free",
+      "purpose": "Ethereum on-chain balance and transaction data"
+    },
+    {
+      "name": "blockscout-base",
+      "type": "data-source",
+      "url": "https://base.blockscout.com/api/v2",
+      "cost_per_call": "free",
+      "purpose": "Base on-chain balance, token, and transaction data"
+    },
+    {
+      "name": "defillama",
+      "type": "data-source",
+      "url": "https://api.llama.fi",
+      "cost_per_call": "free",
+      "purpose": "Protocol TVL and DeFi metrics"
+    },
+    {
+      "name": "snapshot",
+      "type": "data-source",
+      "url": "https://hub.snapshot.org/graphql",
+      "cost_per_call": "free",
+      "purpose": "Governance proposal and voting data"
+    }
+  ],
+  "capabilities": [
+    "treasury-analysis",
+    "governance-analysis",
+    "risk-assessment",
+    "due-diligence",
+    "private-inference",
+    "report-storage",
+    "time-locked-disclosure"
+  ],
+  "execution_model": {
+    "trigger": "request-driven (HTTP POST /analyze)",
+    "autonomy": "Within a single request the agent autonomously fetches data, runs inference, and publishes outputs. It does not self-initiate work."
+  },
+  "compute": {
+    "max_spend_per_analysis_usdc": 0.50,
+    "max_total_spend_usdc": 10.00,
+    "payment_network": "base",
+    "payment_token": "USDC",
+    "payment_protocol": "x402"
+  },
+  "guardrails": {
+    "per_analysis_budget_cap": true,
+    "total_budget_cap": true,
+    "pre_spend_validation": true,
+    "privacy_guarantee": "Venice no-data-retention — sensitive data never stored, logged, or trained on",
+    "output_storage": "Plain text on x402-pastebin, retrievable by token"
+  },
+  "privacy": {
+    "inference_provider": "Venice AI",
+    "data_retention": "none",
+    "prompt_logging": false,
+    "training_on_data": false,
+    "report_storage": "Plain text on x402-pastebin",
+    "report_access": "Token-based retrieval"
+  }
+}

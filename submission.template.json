@@ -1,0 +1,61 @@
+{
+  "_note": "Fill this with real repo, deploy, and publishing links before submitting. Keep the metadata honest and replace placeholder fields only with values you actually used.",
+  "name": "Veiled Oracle",
+  "description": "Private analysis agent built around Venice AI's no-data-retention inference. It analyzes sensitive on-chain data privately, then emits public verdicts plus stored reports and time-locked outputs via x402-powered services on Base.",
+  "problemStatement": "AI agents analyzing treasuries, governance, or protocol risks must send sensitive financial data to inference providers that may store or train on it — the analysis itself becomes a leak. Veiled Oracle solves this by routing all reasoning through Venice AI's no-data-retention inference, splitting output into a public verdict and a private report, with every action paid via x402 USDC micropayments on Base as an auditable trail.",
+  "repoURL": "REPLACE_WITH_PUBLIC_GITHUB_REPO_URL",
+  "trackUUIDs": [
+    "ea3b366947c54689bd82ae80bf9f3310",
+    "fdb76d08812b43f6a5f454744b66f590",
+    "6f0e3d7dcadf4ef080d3f424963caff5",
+    "3bf41be958da497bbb69f1a150c76af9",
+    "4026705215f3401db4f2092f7219561b"
+  ],
+  "_trackNotes": {
+    "ea3b366947c54689bd82ae80bf9f3310": "Venice — Private Agents, Trusted Actions (primary)",
+    "fdb76d08812b43f6a5f454744b66f590": "Synthesis Open Track",
+    "6f0e3d7dcadf4ef080d3f424963caff5": "Agent Services on Base",
+    "3bf41be958da497bbb69f1a150c76af9": "Agents With Receipts — ERC-8004 (x402 USDC receipts as audit trail)",
+    "4026705215f3401db4f2092f7219561b": "Agents for Public Goods Data Analysis (treasury/governance analysis)"
+  },
+  "conversationLog": "See conversationLog.md in this folder. Paste the full contents into the submission field.",
+  "submissionMetadata": {
+    "agentFramework": "other",
+    "agentFrameworkOther": "Custom FastAPI service with x402 PaymentMiddlewareASGI and Venice AI inference pipeline",
+    "agentHarness": "openclaw",
+    "model": "claude-opus-4-6",
+    "skills": [],
+    "tools": [
+      "Venice AI API",
+      "x402 SDK",
+      "x402-pastebin",
+      "x402-timecapsule",
+      "FastAPI",
+      "Etherscan V2 API",
+      "Blockscout API",
+      "DeFi Llama API",
+      "Snapshot GraphQL",
+      "Docker",
+      "httpx",
+      "Pydantic"
+    ],
+    "helpfulResources": [
+      "https://docs.venice.ai/api-reference/chat-completions",
+      "https://github.com/coinbase/x402",
+      "https://docs.etherscan.io/etherscan-v2",
+      "https://docs.blockscout.com/devs/apis/rest",
+      "https://hub.snapshot.org/graphql",
+      "https://defillama.com/docs/api",
+      "https://synthesis.devfolio.co/skill.md",
+      "https://synthesis.devfolio.co/submission/skill.md"
+    ],
+    "helpfulSkills": [],
+    "intention": "continuing",
+    "intentionNotes": "Designed to become a private analysis layer for protocol risk, treasury review, and due diligence workflows where public outputs must be trustworthy without leaking raw context.",
+    "moltbookPostURL": "REPLACE_WITH_MOLTBOOK_POST_URL"
+  },
+  "deployedURL": "https://github.com/OmniacsDAO/venice-private-agents",
+  "videoURL": "REPLACE_WITH_VIDEO_URL",
+  "pictures": "REPLACE_WITH_SCREENSHOT_URLS",
+  "coverImageURL": "REPLACE_WITH_COVER_IMAGE_URL"
+}

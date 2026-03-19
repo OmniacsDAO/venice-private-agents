@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veiled Oracle — Private Intelligence, Public Verdicts</title>
+<style>
+  :root {
+    --bg: #0b0d11; --surface: #141820; --border: #1e2530;
+    --text: #e0e4ea; --muted: #8892a0; --accent: #6c5ce7;
+    --green: #00b894; --yellow: #fdcb6e; --red: #e17055;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    background: var(--bg); color: var(--text);
+    line-height: 1.7; padding: 2rem; max-width: 900px; margin: 0 auto;
+  }
+  h1 { font-size: 1.6rem; margin-bottom: 0.3rem; }
+  h2 { font-size: 1.1rem; color: var(--accent); margin: 2rem 0 0.8rem; }
+  h3 { font-size: 0.95rem; color: var(--muted); margin: 1.2rem 0 0.5rem; }
+  p, li { font-size: 0.85rem; color: var(--muted); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .tag {
+    display: inline-block; font-size: 0.7rem; padding: 0.15rem 0.5rem;
+    border-radius: 3px; margin-left: 0.5rem;
+  }
+  .tag-venice { background: #6c5ce720; color: var(--accent); border: 1px solid var(--accent); }
+  .tag-x402 { background: #00b89420; color: var(--green); border: 1px solid var(--green); }
+  .box {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; padding: 1.2rem; margin: 1rem 0;
+  }
+  .flow {
+    display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 0.5rem; align-items: center; text-align: center; margin: 1.5rem 0;
+  }
+  .flow-step {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; padding: 0.8rem;
+  }
+  .flow-arrow { color: var(--accent); font-size: 1.2rem; }
+  code {
+    background: var(--surface); padding: 0.15rem 0.4rem; border-radius: 3px;
+    font-size: 0.8rem;
+  }
+  pre {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; padding: 1rem; overflow-x: auto;
+    font-size: 0.78rem; line-height: 1.5; margin: 0.8rem 0;
+  }
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.8rem; margin: 1rem 0;
+  }
+  .stat {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; padding: 0.8rem; text-align: center;
+  }
+  .stat-value { font-size: 1.3rem; color: var(--text); font-weight: 700; }
+  .stat-label { font-size: 0.7rem; color: var(--muted); }
+  ul { padding-left: 1.2rem; }
+  li { margin: 0.3rem 0; }
+  .privacy-box {
+    border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1rem 0;
+  }
+</style>
+</head>
+<body>
+
+<h1>
+  Veiled Oracle
+  <span class="tag tag-venice">Venice AI</span>
+  <span class="tag tag-x402">x402</span>
+</h1>
+<p>Private intelligence, public verdicts. Autonomous analysis with zero data exposure.</p>
+
+<div class="flow">
+  <div class="flow-step" style="border-color: var(--green)">
+    <strong>Caller</strong><br>
+    <small style="color:var(--green)">Pays ${{ "%.2f"|format(analyze_price) }} USDC<br>via x402</small>
+  </div>
+  <div class="flow-arrow">&rarr;</div>
+  <div class="flow-step" style="border-color: var(--accent)">
+    <strong>Veiled Oracle</strong><br>
+    <small style="color:var(--accent)">Venice AI inference<br>No data retention</small>
+  </div>
+  <div class="flow-arrow">&rarr;</div>
+  <div class="flow-step" style="border-color: var(--green)">
+    <strong>x402 Services</strong><br>
+    <small style="color:var(--green)">Store &middot; Seal<br>Agent pays downstream</small>
+  </div>
+</div>
+<p style="text-align: center; font-size: 0.75rem; color: var(--muted); margin-top: -0.5rem;">
+  Self-sustaining: caller pays the agent via x402, agent pays downstream services via x402.
+</p>
+
+<h2>How It Works</h2>
+
+<div class="privacy-box">
+  <p><strong>The privacy guarantee:</strong> Venice AI processes all data with no-data-retention
+  inference. Prompts and completions are never stored, logged, or used for training.
+  Raw analysis data exists only in transit &mdash; it enters Venice, analysis comes out,
+  and zero trace remains.</p>
+</div>
+
+<ol>
+  <li>Agent fetches <strong>public on-chain data</strong> from Ethereum (Etherscan) + Base (Blockscout) &mdash; balances, token activity, governance, TVL</li>
+  <li>Data + optional private context sent to <strong>Venice AI</strong> for confidential analysis</li>
+  <li>Venice returns a split output: <strong>public verdict</strong> (safe to publish) + <strong>private report</strong> (detailed findings)</li>
+  <li>Public verdict is <strong>returned directly</strong> in the API response &mdash; severity level + one-sentence summary</li>
+  <li>Full report gets <strong>stored</strong> via x402-pastebin &mdash; plain text, retrievable by token</li>
+  <li>Optionally, report is <strong>time-locked</strong> via x402-timecapsule for delayed disclosure</li>
+  <li>Every action is an <strong>x402 USDC micropayment on Base</strong> &mdash; auditable, transparent, immutable</li>
+</ol>
+
+<h2>Live Stats</h2>
+<div class="stats">
+  <div class="stat">
+    <div class="stat-value">{{ analyses_completed }}</div>
+    <div class="stat-label">Analyses Completed</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">${{ "%.2f"|format(total_spent) }}</div>
+    <div class="stat-label">Total Spent (USDC)</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">{{ venice_model }}</div>
+    <div class="stat-label">Venice Model</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">${{ "%.2f"|format(max_per_analysis) }}</div>
+    <div class="stat-label">Max Per Analysis</div>
+  </div>
+</div>
+
+<h2>x402 Payment Gate</h2>
+<div class="box" style="border-left: 3px solid var(--green); padding-left: 1rem;">
+  {% if x402_enabled %}
+  <p><strong style="color:var(--green)">Active</strong> &mdash; The <code>/analyze</code> endpoint
+  requires an x402 USDC payment of <strong>${{ "%.2f"|format(analyze_price) }}</strong> per request.</p>
+  <p style="margin-top: 0.5rem">This payment covers the agent's downstream costs (Venice inference,
+  x402-pastebin storage, x402-timecapsule sealing). The caller pays, not the operator.</p>
+  <ul style="margin-top: 0.5rem">
+    <li><strong>Price:</strong> ${{ "%.2f"|format(analyze_price) }} USDC</li>
+    <li><strong>Network:</strong> {{ network }}</li>
+    <li><strong>Pay to:</strong> <code>{{ wallet_address }}</code></li>
+    <li><strong>Protocol:</strong> HTTP 402 &rarr; sign USDC payment &rarr; retry with <code>X-Payment</code> header</li>
+  </ul>
+  <p style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--muted)">
+    Free endpoints (<code>/</code>, <code>/health</code>, <code>/status</code>) are not gated.
+    Only <code>POST /analyze</code> requires payment.
+  </p>
+  {% endif %}
+</div>
+
+<h2>API Reference</h2>
+
+<h3>POST /analyze &mdash; Run a Private Analysis
+{% if x402_enabled %}<span class="tag tag-x402">${{ "%.2f"|format(analyze_price) }} USDC</span>{% endif %}
+</h3>
+<p style="margin-bottom: 0.5rem">
+{% if x402_enabled %}
+  Requires x402 payment. First request returns <code>402 Payment Required</code> with payment
+  details. Sign a USDC payment and retry with the <code>X-Payment</code> header.
+{% endif %}
+</p>
+<pre>{
+  "analysis_type": "treasury|governance|risk|due_diligence",
+  "target": "0xAddress or protocol-name",
+  "context": "Optional private context (sent to Venice only)",
+  "publish_verdict": true,
+  "seal_until": "2026-06-01T00:00:00Z"  // optional
+}</pre>
+
+<h3>Response</h3>
+<pre>{
+  "analysis_id": "uuid",
+  "verdict": {
+    "severity": "healthy|caution|warning|critical",
+    "summary": "One-line public conclusion (no sensitive data)",
+  },
+  "data_used": [
+    "Ethereum: 0.0012 ETH, 3 recent txs (via Etherscan)",
+    "Base: 1.5000 ETH (Base), 10 recent txs (via Blockscout)",
+    "Token activity: USDC, WETH (2 tokens seen)"
+  ],
+  "report": {
+    "pastebin_token": "uuid",
+    "retrieval_url": "https://pastebin.0000402.xyz/paste/uuid"
+  },
+  "spending": [
+    { "service": "x402-pastebin", "amount_usdc": 0.01, "description": "..." }
+  ],
+  "total_spent_usdc": 0.01,
+  "privacy_guarantee": "All raw data processed via Venice AI (no-data-retention)..."
+}</pre>
+
+<h3>GET /health &mdash; Health Check</h3>
+<h3>GET /status &mdash; Agent Spending Status</h3>
+
+<h2>Analysis Types</h2>
+<div class="box">
+  <p><strong>Treasury</strong> &mdash; Analyze wallet holdings, token concentrations, spending patterns. Verdict reveals health status; report details positions.</p>
+  <p><strong>Governance</strong> &mdash; Analyze DAO proposals, voting patterns, delegate power. Verdict reveals participation health; report details centralization risks.</p>
+  <p><strong>Risk</strong> &mdash; Analyze protocol risk factors: TVL, audits, dependency chains. Verdict reveals risk level; report details exposures.</p>
+  <p><strong>Due Diligence</strong> &mdash; Research a project or address for legitimacy signals. Verdict reveals trust level; report details red flags.</p>
+</div>
+
+<h2>Privacy Architecture</h2>
+<div class="box">
+  <ul>
+    <li><strong>Venice AI</strong> &mdash; No-data-retention inference. Prompts/completions never stored.</li>
+    <li><strong>Private context</strong> &mdash; Sent to Venice only, never persisted anywhere in our stack.</li>
+    <li><strong>Public verdicts</strong> &mdash; Contain only conclusions. No raw data, no reasoning exposed.</li>
+    <li><strong>Full reports</strong> &mdash; Stored on x402-pastebin as plain text, retrievable by token.</li>
+    <li><strong>Time capsules</strong> &mdash; Content sealed until future date. Inaccessible before unlock.</li>
+    <li><strong>Payment receipts</strong> &mdash; Every x402 payment is a USDC transfer on Base. Auditable but content-opaque.</li>
+  </ul>
+</div>
+
+<h2>Spending Controls</h2>
+<div class="box">
+  <p>The human operator sets spending boundaries that the agent cannot exceed:</p>
+  <ul>
+    <li><code>MAX_SPEND_PER_ANALYSIS</code> &mdash; Cap per single analysis (current: ${{ "%.2f"|format(max_per_analysis) }})</li>
+    <li><code>MAX_TOTAL_SPEND</code> &mdash; Lifetime cap before human re-approval (current: ${{ "%.2f"|format(max_total) }})</li>
+  </ul>
+  <p>The agent self-enforces these limits and returns HTTP 402 when exhausted.</p>
+</div>
+
+<p style="margin-top: 2rem; font-size: 0.7rem; color: var(--muted)">
+  Built by <a href="https://omniacsdao.xyz">Omniacs DAO</a> for
+  <a href="https://synthesis.devfolio.co">Synthesis 2026</a> &mdash;
+  Venice "Private Agents, Trusted Actions" track.
+</p>
+
+</body>
+</html>
